@@ -468,9 +468,21 @@ footer{font:400 .8rem/1.5 var(--body);color:var(--bone-2);padding-bottom:32px}
     <div class="row">
       <button type="button" class="btn" id="copy">Copy email</button>
       <a href="https://linkedin.com/in/ricardocarmonarodarte" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com/idothegood" target="_blank" rel="noopener">Instagram</a>
     </div>
   </section>
-  <footer>© 2026 Ricardo Carmona · Guadalajara, Mexico</footer>
+  <footer class="foot">
+    <div class="fbrand">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="11" ry="4.5" fill="none" stroke="var(--accent)" stroke-width="2.6" transform="rotate(-18 12 12)"/><circle cx="12" cy="12" r="5" fill="var(--bone)"/></svg>
+      <div><b>Ricardo Carmona</b><span>Client success, end to end. Guadalajara, Mexico.</span></div>
+    </div>
+    <nav class="flinks" aria-label="Contact">
+      <a href="mailto:ricardo.carmonarodarte@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/ricardocarmonarodarte" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com/idothegood" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <small class="fcopy">© 2026 Ricardo Carmona. All rights reserved.</small>
+  </footer>
 </main>
 
 <script>
@@ -643,7 +655,15 @@ b.addEventListener('click',()=>{
   display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s}
 #totop.show{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease}
 #totop svg{width:30px;height:30px}
-footer{padding-right:72px}
+.foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;align-items:center;border-top:2px solid var(--line);padding:32px 72px 32px 0;font-size:.9rem}
+.fbrand{display:flex;gap:12px;align-items:center}
+.fbrand svg{width:26px;height:26px;flex:none}
+.fbrand b{display:block;font:700 1rem/1.2 var(--display);color:var(--bone)}
+.fbrand span{color:var(--bone-2)}
+.flinks{display:flex;flex-wrap:wrap;gap:10px 22px}
+.flinks a{font:500 .95rem/1.4 var(--display);color:var(--bone)}
+.fcopy{grid-column:1/-1;color:var(--bone-2);font-size:.8rem}
+@media (max-width:600px){.foot{grid-template-columns:1fr;padding-right:0;padding-bottom:88px}}
 #totop:hover{background:color-mix(in srgb,var(--accent) 85%,var(--bone))}
 #totop:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media (prefers-reduced-motion:no-preference){#totop:hover svg ellipse{transform-origin:24px 24px;animation:turn 3s linear infinite}}
