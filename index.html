@@ -284,7 +284,7 @@ footer{font:400 .8rem/1.5 var(--body);color:var(--bone-2);padding-bottom:32px}
 </div>
 
 <canvas id="sky" aria-hidden="true"></canvas>
-<button type="button" id="totop" aria-label="Back to top"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="20" ry="8" fill="none" stroke="var(--ground)" stroke-width="2.6" transform="rotate(-20 24 24)" opacity=".35"/><path d="M24 33V15M16 22l8-8 8 8" fill="none" stroke="var(--ground)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button type="button" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11.5L12 5.5l6 6" fill="none" stroke="var(--ground)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
 <main>
   <header class="hero neb">
@@ -650,11 +650,11 @@ b.addEventListener('click',()=>{
 </script>
 <style>
 /* back to top: a small orbiting arrow that shows up once you're past the hero */
-#totop{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:40;width:52px;height:52px;padding:0;border-radius:50%;cursor:pointer;
-  background:var(--accent);border:0;box-shadow:var(--shadow),0 0 24px -6px color-mix(in srgb,var(--accent) 60%,transparent);
-  display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s}
-#totop.show{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease}
-#totop svg{width:30px;height:30px}
+#totop{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:40;width:48px;height:48px;padding:0;border-radius:50%;cursor:pointer;
+  background:var(--accent);border:0;box-shadow:0 0 0 4px var(--ground),0 8px 20px rgba(0,0,0,.55);
+  display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
+#totop.show{opacity:1;visibility:visible;transition:opacity .25s ease}
+#totop svg{width:24px;height:24px}
 .foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;align-items:center;border-top:2px solid var(--line);padding:32px 72px 32px 0;font-size:.9rem}
 .fbrand{display:flex;gap:12px;align-items:center}
 .fbrand svg{width:26px;height:26px;flex:none}
@@ -666,13 +666,17 @@ b.addEventListener('click',()=>{
 @media (max-width:600px){.foot{grid-template-columns:1fr;padding-right:0;padding-bottom:88px}}
 #totop:hover{background:color-mix(in srgb,var(--accent) 85%,var(--bone))}
 #totop:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-@media (prefers-reduced-motion:no-preference){#totop:hover svg ellipse{transform-origin:24px 24px;animation:turn 3s linear infinite}}
 </style>
 <script>
 (()=>{const b=document.getElementById('totop');if(!b)return;
   const still=matchMedia('(prefers-reduced-motion: reduce)');
-  const on=()=>b.classList.toggle('show',scrollY>innerHeight);
-  addEventListener('scroll',on,{passive:true});on();
+  // step aside while a drawing (star system, atom, rings) passes under the button, so they never collide
+  const art=[...document.querySelectorAll('.sys,.atom,.band .rings,.system')];
+  const clash=()=>{const a=b.getBoundingClientRect();return art.some(g=>{const c=g.getBoundingClientRect();
+    return c.width&&a.left<c.right+8&&c.left<a.right+8&&a.top<c.bottom+8&&c.top<a.bottom+8})};
+  let t=0;const on=()=>{cancelAnimationFrame(t);t=requestAnimationFrame(()=>b.classList.toggle('show',scrollY>innerHeight&&!clash()))};
+  addEventListener('scroll',on,{passive:true});addEventListener('resize',on);on();
+  document.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',on));
   const up=e=>{e.preventDefault();scrollTo({top:0,behavior:still.matches?'auto':'smooth'})};
   b.addEventListener('click',up);document.querySelector('.top .mark')?.addEventListener('click',up);
 })();
