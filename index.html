@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ricardo Carmona · Client success, end to end</title>
 <meta name="description" content="For 11+ years my work has been what happens after a client says yes: making sure they get the result they came for, so they stay and grow.">
-<meta name="theme-color" content="#12151B">
+<meta name="theme-color" content="#19160F" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F3ECE1" media="(prefers-color-scheme: light)">
 <link rel="canonical" href="https://ricardocarmona.io/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -21,6 +22,50 @@
 <meta name="twitter:title" content="Ricardo Carmona · Client success, end to end">
 <meta name="twitter:description" content="For 11+ years my work has been what happens after a client says yes: making sure they get the result they came for, so they stay and grow.">
 <meta name="twitter:image" content="https://ricardocarmona.io/og.png">
+<script>(()=>{const r=document.documentElement;let m=null;try{m=localStorage.getItem('rc-theme')}catch(e){};r.setAttribute('data-mode',m||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));
+/* the palette follows the visitor's season (northern hemisphere); ?season=winter|spring|summer|autumn previews one */
+const q=new URLSearchParams(location.search).get('season'),mo=new Date().getMonth(),S=['winter','spring','summer','autumn'];
+r.setAttribute('data-season',S.includes(q)?q:S[Math.floor(((mo+1)%12)/3)])})();</script>
+<style>
+/* seasonal palettes: same structure, one accent for text and lines, one band color; light mode deepens the text accent for contrast */
+:root[data-season="winter"]{--ground:#141619;--bone:#E8E6E1;--accent:#7D93A8;--band:#7D93A8;--on-accent:#141619}
+:root[data-season="winter"][data-mode="light"]{--ground:#EEEFEE;--bone:#1A1C20;--accent:#46607A;--band:#8EA2B5;--on-accent:#1A1C20}
+:root[data-season="spring"]{--ground:#15171C;--bone:#ECE8EC;--accent:#9DBEDB;--band:#E6AFBE;--on-accent:#15171C}
+:root[data-season="spring"][data-mode="light"]{--ground:#F4F0F2;--bone:#1C1B22;--accent:#3D6A90;--band:#EDB9C6;--on-accent:#1C1B22}
+:root[data-season="summer"]{--ground:#17151A;--bone:#F2EAE2;--accent:#F0913F;--band:#F29A86;--on-accent:#17151A}
+:root[data-season="summer"][data-mode="light"]{--ground:#F8F1E8;--bone:#221A16;--accent:#AD4F12;--band:#F3A07A;--on-accent:#221A16}
+:root[data-season="autumn"]{--ground:#19160F;--bone:#EEE5D7;--accent:#DD8A3E;--band:#B5733F;--on-accent:#19160F}
+:root[data-season="autumn"][data-mode="light"]{--ground:#F3ECE1;--bone:#221C15;--accent:#9C4F14;--band:#D98A45;--on-accent:#221C15}
+</style>
+<style>
+/* matte: flat color only, no glows */
+.neb::before{display:none}
+.disc{box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 45%,transparent),0 24px 48px -20px rgba(0,0,0,.6)!important;background:color-mix(in srgb,var(--band) 22%,var(--ground))!important}
+.btn{box-shadow:var(--shadow-sm)!important}
+.sys circle[fill^="url"]{display:none}
+.band{background:var(--band)!important}
+.tfeat{background:var(--panel)!important}
+#totop{box-shadow:0 0 0 4px var(--ground),0 6px 14px rgba(0,0,0,.35)!important}
+/* theme toggle */
+.tools-r{display:flex;gap:10px;align-items:center}
+#theme{width:42px;height:42px;border-radius:50%;border:2px solid var(--line);background:transparent;color:var(--bone);display:grid;place-items:center;cursor:pointer;padding:0}
+#theme:hover{border-color:var(--accent)}
+#theme svg{width:20px;height:20px}
+#theme .sun{display:none}
+:root[data-mode="dark"] #theme .sun{display:block}:root[data-mode="dark"] #theme .moon{display:none}
+/* light mode: paper ground, ink text, deeper accent for text; the band keeps the base accent with ink on it */
+:root[data-mode="light"]{
+  color-scheme:light;--stars:.55;
+  --shadow-sm:0 1px 2px rgba(30,24,16,.12),0 4px 10px -4px rgba(30,24,16,.18);
+  --shadow:0 2px 6px rgba(30,24,16,.10),0 16px 32px -16px rgba(30,24,16,.25);
+}
+:root[data-mode="light"] .num b{text-shadow:none}
+@media (prefers-reduced-motion: reduce){.atom .e1{cx:300px;cy:160px}.atom .e2{cx:20px;cy:160px}.atom .e3{cx:160px;cy:108px}}
+:root[data-mode="light"] .atom .e1,:root[data-mode="light"] .atom .e2,:root[data-mode="light"] .atom .e3,:root[data-mode="light"] .planet,:root[data-mode="light"] .sys .pl,:root[data-mode="light"] .sys .star{filter:drop-shadow(0 3px 4px rgba(30,24,16,.22))}
+@media (max-width:480px){:root .mark{font-size:.95rem;white-space:nowrap}:root .top a.cta{padding:9px 12px;font-size:.88rem;white-space:nowrap}#theme{width:38px;height:38px}.tools-r{gap:8px}}
+:root[data-mode="light"] .photo img{filter:drop-shadow(0 14px 18px rgba(30,24,16,.25))}
+:root[data-mode="light"] body::after{opacity:.05;mix-blend-mode:multiply}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Figtree:wght@400;500;600&display=swap">
@@ -28,7 +73,7 @@
 /* Concept: Gravity. Ricardo is the center of mass; customers are bodies in orbit. Churn is a body drifting off, and his job is the pull that brings it back.
    Three colors: night ground, bone, one blue. Grain over everything so the dark reads as material, not a void. */
 :root{
-  --ground:#12151B; --bone:#ECE8DF; --accent:#A58FD8;
+  --ground:#141619; --bone:#E8E6E1; --accent:#7D93A8; --band:#7D93A8; --on-accent:#141619; --stars:1;
   --bone-2:color-mix(in srgb,var(--bone) 62%,var(--ground));
   --line:color-mix(in srgb,var(--bone) 14%,var(--ground));
   --panel:color-mix(in srgb,var(--accent) 16%,var(--ground));
@@ -100,8 +145,8 @@ p{margin:0}
 .atom{width:100%;max-width:420px;height:auto;display:block;margin-inline:auto;overflow:visible}
 .atom .a1{stroke:var(--bone)}.atom .a2{stroke:var(--accent)}.atom .a3{stroke:color-mix(in srgb,var(--bone) 45%,var(--ground))}
 .atom .e1,.t1{fill:var(--bone);background:var(--bone)}.atom .e2,.t2{fill:var(--accent);background:var(--accent)}.atom .e3,.t3{fill:var(--ground);stroke:var(--bone);stroke-width:4;background:var(--ground);border:4px solid var(--bone)}
-.atom .core{fill:var(--accent);filter:drop-shadow(0 0 18px var(--accent))}
-.atom .coret{font-family:"Rubik",system-ui,sans-serif;font-weight:700;font-size:14px;letter-spacing:1.5px;fill:var(--ground);dominant-baseline:central}
+.atom .core{fill:var(--band)}
+.atom .coret{font-family:"Rubik",system-ui,sans-serif;font-weight:700;font-size:14px;letter-spacing:1.5px;fill:var(--on-accent);dominant-baseline:central}
 .traits{display:grid;gap:36px}
 .trait{display:grid;grid-template-columns:22px minmax(0,1fr);gap:18px}
 .tdot{width:22px;height:22px;border-radius:50%;margin-top:6px}
@@ -110,7 +155,7 @@ p{margin:0}
 @media (max-width:860px){.threegrid{grid-template-columns:1fr}.atom{max-width:300px}}
 
 /* band: the one loud moment */
-.band{margin-inline:calc(50% - 50vw);padding-inline:max(16px,calc(50vw - var(--wrap)/2));padding-block:clamp(72px,10vw,120px);background:var(--accent);color:var(--ground);position:relative;overflow:hidden}
+.band{--ground:var(--on-accent);margin-inline:calc(50% - 50vw);padding-inline:max(16px,calc(50vw - var(--wrap)/2));padding-block:clamp(72px,10vw,120px);background:var(--band);color:var(--ground);position:relative;overflow:hidden}
 .band .eyebrow{color:var(--ground)}
 .band h2{color:var(--ground);max-width:14ch}
 .band .bandhead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;margin-bottom:48px}
@@ -203,7 +248,7 @@ details[open] .tog::after{transform:translate(-50%,-50%) rotate(0)}
 .contact h2 em{font-style:italic;font-weight:500;color:var(--accent)}
 .contact .mail{font:600 clamp(1.15rem,3vw,1.8rem)/1.2 var(--display);word-break:break-word}
 .row{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
-.btn{font:500 1rem/1 var(--display);color:var(--ground);background:var(--accent);border:0;padding:15px 22px;border-radius:99px;cursor:pointer;transition:transform .2s,background-color .2s}
+.btn{font:500 1rem/1 var(--display);color:var(--on-accent);background:var(--band);border:0;padding:15px 22px;border-radius:99px;cursor:pointer;transition:transform .2s,background-color .2s}
 .btn:hover{background:var(--bone)}
 footer{font:400 .8rem/1.5 var(--body);color:var(--bone-2);padding-bottom:32px}
 
@@ -273,18 +318,19 @@ footer{font:400 .8rem/1.5 var(--body);color:var(--bone-2);padding-bottom:32px}
 </style>
 </head>
 <body>
-
-
 <div class="top">
   <a class="mark" href="#" aria-label="Ricardo Carmona, back to top">
     <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="11" ry="4.5" fill="none" stroke="var(--accent)" stroke-width="2.6" transform="rotate(-18 12 12)"/><circle cx="12" cy="12" r="5" fill="var(--bone)"/></svg>
     Ricardo Carmona
   </a>
-  <a class="cta" href="#contact">Get in touch</a>
+  <div class="tools-r">
+    <button type="button" id="theme" aria-label="Switch light or dark mode"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <a class="cta" href="#contact">Get in touch</a>
+  </div>
 </div>
 
 <canvas id="sky" aria-hidden="true"></canvas>
-<button type="button" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11.5L12 5.5l6 6" fill="none" stroke="var(--ground)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button type="button" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11.5L12 5.5l6 6" fill="none" stroke="var(--on-accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
 <main>
   <header class="hero neb">
@@ -491,7 +537,7 @@ footer{font:400 .8rem/1.5 var(--body);color:var(--bone-2);padding-bottom:32px}
   const back=sys.querySelector('.back'),front=sys.querySelector('.front');
   const bx=back.getContext('2d'),fx=front.getContext('2d');
   const css=getComputedStyle(document.documentElement);
-  const ACC=css.getPropertyValue('--accent').trim()||'#79A6DC',BONE=css.getPropertyValue('--bone').trim()||'#ECE8DF';
+  let ACC,BONE;const tok=()=>{const c=getComputedStyle(document.documentElement);ACC=c.getPropertyValue('--accent').trim()||'#A58FD8';BONE=c.getPropertyValue('--bone').trim()||'#ECE8DF'};tok();addEventListener('resize',tok);
   const still=!matchMedia('(prefers-reduced-motion: no-preference)').matches;
   const TILT=-0.3, RINGS=[0.44,0.54,0.64], RMAX=0.67;
   let S=0,W=0,dpr=1;
@@ -598,12 +644,13 @@ b.addEventListener('click',()=>{
   const c=document.getElementById('sky'); if(!c) return;
   const x=c.getContext('2d');
   const still=matchMedia('(prefers-reduced-motion: reduce)');
-  const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#A58FD8';
+  let accent='#A58FD8',bone='#ECE8DF',dim=1;
   // three layers: far stars barely move, near stars drift more as you scroll
   const LAYERS=[{k:.02,n:.55,r:[.5,.9],a:.45},{k:.06,n:.3,r:[.8,1.3],a:.6},{k:.13,n:.15,r:[1.1,1.9],a:.8}];
   let W=0,H=0,dpr=1,stars=[],arcs=[],raf=0;
   let seed=7; const rnd=()=>((seed=(seed*16807)%2147483647)/2147483647);
   function build(){
+    const cs=getComputedStyle(document.documentElement);accent=cs.getPropertyValue('--accent').trim()||accent;bone=cs.getPropertyValue('--bone').trim()||bone;dim=parseFloat(cs.getPropertyValue('--stars'))||1;
     dpr=Math.min(devicePixelRatio||1,2); W=innerWidth; H=innerHeight;
     c.width=W*dpr; c.height=H*dpr; x.setTransform(dpr,0,0,dpr,0,0);
     seed=7; stars=[];
@@ -623,17 +670,16 @@ b.addEventListener('click',()=>{
     x.lineWidth=1.5;
     for(const o of arcs){
       x.save(); x.translate(o.cx,o.cy-((sy*o.k)%H)); x.rotate(o.t);
-      x.strokeStyle='rgba(236,232,223,.05)';
-      x.beginPath(); x.ellipse(0,0,o.rx,o.ry,0,0,6.283); x.stroke(); x.restore();
+      x.strokeStyle=bone;x.globalAlpha=.06*dim;
+      x.beginPath(); x.ellipse(0,0,o.rx,o.ry,0,0,6.283); x.stroke(); x.restore(); x.globalAlpha=1;
     }
     for(const s of stars){
       let y=(s.y-sy*s.k)%H; if(y<0) y+=H;
       const tw=still.matches?1:.65+.35*Math.sin(t*.001*s.s+s.p);
-      x.globalAlpha=s.a*tw;
-      x.fillStyle=s.tint?accent:'#ECE8DF';
-      if(s.glow){x.shadowColor=accent;x.shadowBlur=6}
+      x.globalAlpha=s.a*tw*dim;
+      x.fillStyle=s.tint?accent:bone;
+      
       x.beginPath(); x.arc(s.x,y,s.r,0,6.283); x.fill();
-      if(s.glow){x.shadowBlur=0}
     }
     x.globalAlpha=1;
   }
@@ -650,7 +696,7 @@ b.addEventListener('click',()=>{
 </script>
 <style>
 /* back to top: a small orbiting arrow that shows up once you're past the hero */
-#totop{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:40;width:48px;height:48px;padding:0;border-radius:50%;cursor:pointer;
+#totop{background:var(--band)!important;position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:40;width:48px;height:48px;padding:0;border-radius:50%;cursor:pointer;
   background:var(--accent);border:0;box-shadow:0 0 0 4px var(--ground),0 8px 20px rgba(0,0,0,.55);
   display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
 #totop.show{opacity:1;visibility:visible;transition:opacity .25s ease}
@@ -679,6 +725,16 @@ b.addEventListener('click',()=>{
   document.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',on));
   const up=e=>{e.preventDefault();scrollTo({top:0,behavior:still.matches?'auto':'smooth'})};
   b.addEventListener('click',up);document.querySelector('.top .mark')?.addEventListener('click',up);
+})();
+</script>
+<script>
+/* light/dark: follows the device until you pick, then remembers the pick */
+(()=>{const r=document.documentElement,mq=matchMedia('(prefers-color-scheme: light)');
+  let saved=null;try{saved=localStorage.getItem('rc-theme')}catch(e){}
+  const apply=m=>{r.setAttribute('data-mode',m);dispatchEvent(new Event('resize'))};
+  apply(saved||(mq.matches?'light':'dark'));
+  mq.addEventListener?.('change',e=>{let s=null;try{s=localStorage.getItem('rc-theme')}catch(_){};if(!s)apply(e.matches?'light':'dark')});
+  document.getElementById('theme')?.addEventListener('click',()=>{const m=r.getAttribute('data-mode')==='light'?'dark':'light';try{localStorage.setItem('rc-theme',m)}catch(e){};apply(m)});
 })();
 </script>
 
