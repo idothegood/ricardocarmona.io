@@ -57,7 +57,7 @@ p{margin:0}
 
 /* top bar */
 .top{display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:var(--wrap);margin:0 auto}
-.mark{font:700 1.05rem/1 var(--display);letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.mark{text-decoration:none;color:var(--bone);font:700 1.05rem/1 var(--display);letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
 .mark svg{width:24px;height:24px}
 .top a.cta{font:500 .95rem/1 var(--display);text-decoration:none;border:2px solid var(--line);padding:10px 16px;border-radius:99px;transition:border-color .2s,background-color .2s}
 .top a.cta:hover{border-color:var(--accent)}
@@ -276,14 +276,16 @@ footer{font:400 .8rem/1.5 var(--body);color:var(--bone-2);padding-bottom:32px}
 
 
 <div class="top">
-  <div class="mark">
+  <a class="mark" href="#" aria-label="Ricardo Carmona, back to top">
     <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="11" ry="4.5" fill="none" stroke="var(--accent)" stroke-width="2.6" transform="rotate(-18 12 12)"/><circle cx="12" cy="12" r="5" fill="var(--bone)"/></svg>
     Ricardo Carmona
-  </div>
+  </a>
   <a class="cta" href="#contact">Get in touch</a>
 </div>
 
 <canvas id="sky" aria-hidden="true"></canvas>
+<button type="button" id="totop" aria-label="Back to top"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="20" ry="8" fill="none" stroke="var(--ground)" stroke-width="2.6" transform="rotate(-20 24 24)" opacity=".35"/><path d="M24 33V15M16 22l8-8 8 8" fill="none" stroke="var(--ground)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
 <main>
   <header class="hero neb">
     <div>
@@ -468,7 +470,7 @@ footer{font:400 .8rem/1.5 var(--body);color:var(--bone-2);padding-bottom:32px}
       <a href="https://linkedin.com/in/ricardocarmonarodarte" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </section>
-  <footer>Draft 13 · "Gravity" direction · copy written from the resume for Ricardo to edit</footer>
+  <footer>© 2026 Ricardo Carmona · Guadalajara, Mexico</footer>
 </main>
 
 <script>
@@ -632,6 +634,27 @@ b.addEventListener('click',()=>{
   addEventListener('resize',()=>{build();start()});
   document.addEventListener('visibilitychange',start);
   still.addEventListener?.('change',start);
+})();
+</script>
+<style>
+/* back to top: a small orbiting arrow that shows up once you're past the hero */
+#totop{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:40;width:52px;height:52px;padding:0;border-radius:50%;cursor:pointer;
+  background:var(--accent);border:0;box-shadow:var(--shadow),0 0 24px -6px color-mix(in srgb,var(--accent) 60%,transparent);
+  display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s}
+#totop.show{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease}
+#totop svg{width:30px;height:30px}
+footer{padding-right:72px}
+#totop:hover{background:color-mix(in srgb,var(--accent) 85%,var(--bone))}
+#totop:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){#totop:hover svg ellipse{transform-origin:24px 24px;animation:turn 3s linear infinite}}
+</style>
+<script>
+(()=>{const b=document.getElementById('totop');if(!b)return;
+  const still=matchMedia('(prefers-reduced-motion: reduce)');
+  const on=()=>b.classList.toggle('show',scrollY>innerHeight);
+  addEventListener('scroll',on,{passive:true});on();
+  const up=e=>{e.preventDefault();scrollTo({top:0,behavior:still.matches?'auto':'smooth'})};
+  b.addEventListener('click',up);document.querySelector('.top .mark')?.addEventListener('click',up);
 })();
 </script>
 
